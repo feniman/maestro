@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         'App\Console\Commands\KeyGenerateCommand',
         'App\Console\Commands\Maestro\KeyCommand',
+        'App\Console\Commands\Maestro\RegisterCommand',
     ];
 
     /**

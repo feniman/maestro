@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Facades\Route;
 
 /** @var \Laravel\Lumen\Routing\Router $router */
 
@@ -12,7 +13,13 @@
 | and give it the Closure to call when that URI is requested.
 |
 */
-
 $router->get('/', function () use ($router) {
     return $router->app->version();
+});
+
+$router->group(['prefix'=>'register','middleware' => 'register'], function () use ($router) {
+	$router->post('/service', 'ServiceController@register');
+	$router->post('/remoteaddr', 'RemoteAddressController@register');
+});
+$router->group(['middleware' => 'auth'], function () use ($router) {
 });

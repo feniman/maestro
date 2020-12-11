@@ -15,7 +15,10 @@ class CreateRemoteAddressesTable extends Migration
     {
         Schema::create('remote_addresses', function (Blueprint $table) {
             $table->uuid('id')->unique();
-            $table->string('remote_address', 128);
+            $table->string('part1', 3);
+            $table->string('part2', 3);
+            $table->string('part3', 3);
+            $table->string('part4', 3);
             $table->tinyInteger('status')->comment('0=Inactive, 1=Active, 2=Draft, 3=Trash');
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();

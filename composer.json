@@ -15,6 +15,7 @@
         "guzzlehttp/guzzle": "^7.2",
         "illuminate/redis": "^8.17",
         "laravel/lumen-framework": "^8.0",
+        "predis/predis": "^1.1",
         "ramsey/uuid": "^4.1"
     },
     "require-dev": {

@@ -81,8 +81,7 @@ class KeyCommand extends Command
     {
         return array(
             array('get', null, InputOption::VALUE_NONE, 'Return current service key.'),
-            array('set', null, InputOption::VALUE_NONE, 'Generate ans set a new service key.'),
-            array('register', null, InputOption::VALUE_NONE, 'Send current service key to Maestro Services Orchestrator.'),
+            array('set', null, InputOption::VALUE_NONE, 'Generate ans set a new service key.')
         );
     }
 

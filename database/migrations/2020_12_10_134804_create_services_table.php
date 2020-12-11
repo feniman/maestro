@@ -17,7 +17,7 @@ class CreateServicesTable extends Migration
             $table->uuid('id')->unique();
             $table->string('host', 128);
             $table->string('app_key', 128);
-            $table->string('app_name', 128);
+            $table->string('app_name', 128)->unique();
             $table->string('service_key', 128);
             $table->string('remote_addr', 128);
             $table->tinyInteger('status')->comment('0=Inactive, 1=Active, 2=Draft, 3=Trash');
