@@ -39,7 +39,7 @@ class TokenCommand extends Command
             return $this->info("Run `php artisan maestro:key --set` to key generation");
         }
         
-        return $this->info(md5(env('APP_KEY').'.'.env('APP_NAME').env('SERVICE_KEY')));
+        return $this->info(md5(env('APP_KEY').'.'.env('APP_NAME').'.'.env('SERVICE_KEY')));
     }
 
     /**
