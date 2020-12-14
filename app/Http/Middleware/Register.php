@@ -15,21 +15,11 @@ class Register
      */
     public function handle($request, Closure $next)
     {
-
-        // return response([
-        //     'REQUEST_APP_KEY' => $request->app_key,
-        //     'REQUEST_APP_NAME' => $request->app_name,
-        //     'REQUEST_SERVICE_KEY' => $request->service_key,
-        //     'REQUEST_REMOTE_ADDR' => $request->remote_addr,
-        //     'CURRENT_APP_KEY' => env('APP_KEY'),
-        //     'CURRENT_APP_NAME' => env('APP_NAME'),
-        //     'CURRENT_SERVICE_KEY' => env('SERVICE_KEY'),
-        //     'CURRENT_REMOTE_ADDR' => gethostbyname(gethostname()),
-        //     'token' => md5(env('APP_KEY').'.'.env('APP_NAME').'.'.env('SERVICE_KEY')),
-        // ]);
         if ($request->app_key === env('APP_KEY') && $request->app_name === env('APP_NAME') && $request->service_key === env('SERVICE_KEY') && $request->remote_addr === gethostbyname(gethostname())) {
             return $next($request);
         }
+
+        
 
         if ($request->header('token') === md5(env('APP_KEY').'.'.env('APP_NAME').'.'.env('SERVICE_KEY'))) {
             return $next($request);            

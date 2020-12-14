@@ -52,4 +52,25 @@ class ServiceController extends Controller
             ], Response::HTTP_BAD_REQUEST);
         }
     }
+
+    public function auth(Request $request)
+    {
+        $this->validate($request, [
+            'app_name' => 'required',
+            'token' => 'required',
+            'remote_addr' => 'required'
+        ]);
+
+        $service = Service::Where('status', [EnumStatus::ACTIVE])->where('app_name', $request->app_name)->first();
+
+        if (!empty($service->app_key) && md5($service->app_key.'.'.$service->app_name.'.'.$service->service_key) === $request->token) {
+            if (!empty($service->remote_addr) && $service->remote_addr == $request->remote_addr) {
+                return response(['message'=>'Authorized'], 200);
+            }
+            return response(['message'=>'Remote address unauthorized'], 401);
+        }
+
+
+        return response(['message'=>'Unauthorized'], 401);
+    }
 }

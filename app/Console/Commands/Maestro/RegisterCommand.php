@@ -40,10 +40,10 @@ class RegisterCommand extends Command
         if (strlen(env('SERVICE_KEY'))==0) {
             return $this->info('SERVICE_KEY was not generated');
         }
-        $client = new \GuzzleHttp\Client([
-            'base_uri' => env('APP_URL')
-        ]);
         try{
+            $client = new \GuzzleHttp\Client([
+                'base_uri' => env('APP_URL')
+            ]);
             $response = $client->post('register/service', [
                 \GuzzleHttp\RequestOptions::JSON => [
                     'host' => gethostname(),

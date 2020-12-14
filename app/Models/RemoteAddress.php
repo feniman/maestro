@@ -17,7 +17,10 @@ class RemoteAddress extends Model
 
     protected $fillable = [
         'id',
-        'remote_address',
+        'part1',
+        'part2',
+        'part3',
+        'part4',
         'status',
         'deleted_at',
     ];

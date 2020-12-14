@@ -21,5 +21,5 @@ $router->group(['prefix'=>'register','middleware' => 'register'], function () us
 	$router->post('/service', 'ServiceController@register');
 	$router->post('/remoteaddr', 'RemoteAddressController@register');
 });
-$router->group(['middleware' => 'auth'], function () use ($router) {
-});
+
+$router->post('/auth', 'ServiceController@auth');
